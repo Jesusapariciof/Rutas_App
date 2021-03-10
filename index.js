@@ -7,6 +7,7 @@ const placesRouter = require('./routes/placesRoute')
 
 
 
+
 const {env: {MONGODB_URL}}= process
 
 mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUnifiedTopology:true})
@@ -21,6 +22,7 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
+    
     
 
     const port = 3000

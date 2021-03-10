@@ -18,6 +18,11 @@ const place = new Schema({
     description:{
         type: String,
         required: true,
+    },
+
+    guideId:{
+        type: Schema.Types.ObjectId, 
+        ref: "Guide"
     }
 
     // Dificultad de acceso, dificultad de aparcamiento, tiempo de duración.

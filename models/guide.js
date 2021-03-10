@@ -4,7 +4,6 @@ const guide = new Schema({
     name:{
         type: String,
         required: true,
-        trim: true,
     },
     image:{
         type: String,
@@ -16,8 +15,8 @@ const guide = new Schema({
         required: true,
     },
     places:{
-        type: String,
-        required: true,
+        type: [Schema.Types.ObjectId],
+        ref: "Place"     
     },
 
     //Duración, mapa, creador, fecha creación

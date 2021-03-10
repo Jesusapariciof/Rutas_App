@@ -1,5 +1,6 @@
 const Router = require('express')
 const Guide = require('../models/guide')
+const User = require('../models/user')
 
 
 const guideRoute = new Router()
@@ -16,6 +17,7 @@ guideRoute.get('/guide', (req, res)=>{
     })
 })
 
+
 //delete a guide
 
 guideRoute.delete('/guide/:id', (req, res)=>{
@@ -24,7 +26,10 @@ guideRoute.delete('/guide/:id', (req, res)=>{
         if (error){
             res.status(400).send('No ha sido posible realizar los cambios')
         }
-        res.send('Eliminado correctamente')
+        // if(!User){
+        //     res.status(400).send("No está autorizado para borrar esta ruta")
+        // }
+        res.status(200).send('Eliminado correctamente')
     })
     
 })
@@ -40,8 +45,6 @@ guideRoute.post('/guide', (req, res)=>{
             description: description,
             places: places
     })
-
-    
         
         return guide.save()
         .then(guide => res.send (guide))
