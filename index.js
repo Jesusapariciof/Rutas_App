@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     app.use(guideRoute)
     app.use(placesRouter)
     
-    
+    app.use(express.static("storage/imgs"))
 
     const port = 3000
     app.listen(port, ()=>{

@@ -23,6 +23,12 @@ const place = new Schema({
     guideId:{
         type: Schema.Types.ObjectId, 
         ref: "Guide"
+    },
+
+    usuarioInteresado:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+
     }
 
     // Dificultad de acceso, dificultad de aparcamiento, tiempo de duración.

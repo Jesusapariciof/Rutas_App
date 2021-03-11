@@ -22,6 +22,9 @@ const user = new Schema({
         trim: true,
         minlength: 6
     },
+    
+
+
 
 })
 
