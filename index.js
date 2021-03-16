@@ -16,13 +16,13 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     const router = require('./routes/index')
     const guideRoute = require('./routes/guideRoute')
     const placesRouter = require ('./routes/placesRoute')
-
+    
+    //Middleware
     app.use(express.json())
     app.use(express.urlencoded())
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
-    
     app.use(express.static("storage/imgs"))
 
     const port = 3000

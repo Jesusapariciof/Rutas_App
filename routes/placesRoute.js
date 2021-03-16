@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Router = require('express')
 const places = require('../models/places')
 const Place = require('../models/places')
@@ -6,12 +7,15 @@ const User = require('../models/user')
 const placesRouter = new Router()
 const express = require('express')
 const multer = require('../routes/multer')
+const jwt = require('jsonwebtoken')
 
+const verifyToken = require('../models/verifyToken')
 
+const { env: { SECRET } } = process
 
 
 //new places
-placesRouter.post('/places', multer.single('image'), (req, res) => {
+placesRouter.post('/places', verifyToken, multer.single('image'),async(req, res, next) => {
     // const { body: { name, town, description, guideId } } = req
     const name = req.body.name
     const image = req.file.filename
@@ -60,24 +64,28 @@ placesRouter.get('/guideId/:id', (req, res) => {
 })
 
 
-
 //delete places
-placesRouter.delete('/places/:id', (req, res) => {
-    const { params: { id } } = req
-
-    Place.findByIdAndRemove(id, (error, place) => {
-        if (error) {
-            res.status(400).send('No ha sido posible eliminar')
+placesRouter.delete('/places/:id', verifyToken, (req, res, next) => {
+    const { params: {id},userId } = req
+    User.findById(userId, (error, user)=>{
+        if(error){
+            res.status(400).send('Ha ocurrido un error')
         }
-        // if(!User){
-        //     res.status(400).send('No está autorizado para eliminar')
-        // }
-        res.json(place)
+        if(!user){
+            res.status(400).send('No está autorizado para eliminar')
+        }
+        Place.findByIdAndRemove(id, (error, place) => {
+            if (error) {
+                res.status(400).send('No ha sido posible eliminar')
+            }
+            res.json(place)
+        })
     })
+
 })
 
-//modify a place
-placesRouter.put('/modificar', (req, res) => {
+//modify a place. (Para modificar con postman hay que copiar el _id del lugar)
+placesRouter.put('/modificar',verifyToken, (req, res) => {
     let body = req.body;
     Place.updateOne({ _id: body._id }, {
         $set: req.body
@@ -91,13 +99,14 @@ placesRouter.put('/modificar', (req, res) => {
     )
 
 })
-//Selecciona los lugares que le interesan al usuario (con su id)
-placesRouter.get('/newplaces/user/:id', (req, res)=>{
+//Selecciona los lugares que le interesan (favoritos) y los asocia a su id.
+//usuarioInteresado lleva la misma Id que crea automáticamente moongodb
+placesRouter.get('/favoritesplaces/user/:id', verifyToken, (req, res)=>{
     const {params: {id}}= req;
 
     Place.find({usuarioInteresado:id})
     .populate("guideId", "name")
-    .populate("usuarioInteresado", ["email","password", "username"])
+    .populate("usuarioInteresado", "username")
     .exec((error, place)=>{
         if(error){
             res.sendStatus(400)

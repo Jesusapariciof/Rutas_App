@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose')
-// const bcrypt = require('bcrypt')
-// const saltRounds = 10;
+ const bcrypt = require('bcrypt')
+ const saltRounds = 10;
 
 const user = new Schema({
     username: {
@@ -28,35 +28,26 @@ const user = new Schema({
 
 })
 
-// user.pre('save', function(next){
-//     if(this.isNew || this.Modified('password')){
-//         const document = this;
+//Guardar contraseña encriptada en el registro de usuario
+user.pre('save', function(next){
+    if(this.isNew || this.isModified('password')){
+        const document = this;
 
-//         bcrypt.hash(document.password, saltRounds, (error, hashedPassword)=>{
-//             if(error){
-//                 next(error)
-//             }
-//             else{
-//                 document.password = hashedPassword;
-//                 next()
-//             }
-//         });
-//     }
-//     else{
-//         next()
-//     }
-// })
+        bcrypt.hash(document.password, saltRounds, (error, hashedPassword)=>{
+            if(error){
+                next(error)
+            }
+            else{
+                document.password = hashedPassword;
+                next()
+            }
+        });
+    }
+    else{
+        next()
+    }
+})
 
-// user.methods.isCorrectPassword = function(password, callback){
-//     bcrypt.compare(password, this.password, function(error, same){
-//         if(error){
-//             callback(error)
-//         }
-//         else{
-//             callback(error, same)
-//         }
-//     })
-// }
 
 
 
