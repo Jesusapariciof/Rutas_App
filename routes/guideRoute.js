@@ -17,7 +17,6 @@ guideRoute.get('/guide', (req, res)=>{
     })
 })
 
-
 //delete a guide
 
 guideRoute.delete('/guide/:id', (req, res)=>{

@@ -15,7 +15,19 @@ const validations = {
         if(typeof password !== 'string') throw new TypeError(`${password} no es una contraseña`)
         if(!password.trim().length) throw new Error('La contraseña está vacia')
         if(password.length <6 ) throw new Error ('La contraseña debe contener mínimo seis carateres')
-    }
+    },
+    validateName(name){
+        if(typeof name !== 'string') throw new TypeError(`${name} no es un nombre`)
+        if(!name.trim().length) throw new Error('El nombre está vacio')
+},
+validateTown(town){
+    if(typeof town !== 'string') throw new TypeError(`${town} no es un pueblo`)
+    if(!town.trim().length) throw new Error('El campo está vacio')
+},
+validateDescription(description){
+    if(typeof description !== 'string') throw new TypeError(`${description} no es una descripción`)
+    if(!description.trim().length) throw new Error('El campo descripción está vacio')
+}
 }
 
 module.exports = validations

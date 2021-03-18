@@ -2,7 +2,7 @@ require('dotenv').config()
 const { Router } = require('express')
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
-const { validatePassword, validateEmail } = require('../validations/validators')
+const { validateEmail, validatePassword} = require('../validations/validators')
 const jwt = require('jsonwebtoken')
 const user = require('../models/user')
 
@@ -42,7 +42,6 @@ router.post('/register', (req, res)=>{
         
     })
 
-
     //Modificar contraseña y encriptación
 
     router.put('/user/password/:id', (req, res)=>{
@@ -74,7 +73,7 @@ router.post('/register', (req, res)=>{
             if(validPassword){
                 
                 const token = jwt.sign({id: user._id}, SECRET, {
-                    expiresIn: 120
+                    expiresIn: 60*60*24
                 })
                 res.json({auth: true, token})
                 // res.status(200).json({message: 'Contraseña correcta'})
