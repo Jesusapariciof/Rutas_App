@@ -51,7 +51,7 @@ placesRouter.post('/places', verifyToken, multer.single('image'), async (req, re
                 user.lugaresCreados.push(newPlace._id)
                 user.save()
                     .then(() => { })
-                return res.send('Lugar creado')
+                return res.status(201).send('Lugar creado')
             })
             .catch(console.error)
     })
@@ -98,8 +98,8 @@ placesRouter.delete('/places/user/:id/delete', verifyToken, (req, res) => {
                 return User.findByIdAndUpdate(userId, { $pull: { lugaresCreados: id } })
                     .then(doc => {
                         return Place.findByIdAndRemove(id).lean()
-                            .then(place => res.send('Lugar eliminado'))
-                            .catch(error => res.send('Ha ocurrido un error'))
+                            .then(place => res.status(200).send('Lugar eliminado'))
+                            .catch(error => res.status(400).send('Ha ocurrido un error'))
                     })
                 }
             })
@@ -107,47 +107,27 @@ placesRouter.delete('/places/user/:id/delete', verifyToken, (req, res) => {
         .catch(error => res.send('Se ha producido un error'))
 })
 
-
-//modificar un lugar
-// placesRouter.patch('/modificar', verifyToken, function(req, res) {
-//     const body = req.body;
-//     Place.findOneAndUpdate({ _id: body._id },{
-
-//             $set: req.body
-//         },
-//         function(error,info) {
-//             if (error){
-//                 res.send('error');
-//             }else{
-//                 res.json(info)
-
-//             }
-//         }
-//     )
-// });
-
-
-//modify a place. (Para modificar con postman hay que copiar el _id del lugar)
-// placesRouter.put('/modificar/:id', verifyToken, (req, res) => {
-//     let body = req.body;
-//     let _id = req.params.id
-//     let userId = req.userId
-//     return User.findById(userId).lean()
-//     .then(user => {
-//         if (!user) throw new Error(`user with id ${userId} not found`)
-//      Place.findByIdAndUpdate(_id, {
-//         $set: {body}
-//     },
-//         function (error, info) {
-//             if (error) {
-//                 res.status(400).send('Se ha producido un error')
-//             }
-//             res.json(info)
-//         }
-//     )
-//     })
-// })
-
+//modify a place
+placesRouter.put('/places/user/:id/modificar', verifyToken, (req, res) => {
+    const { params: { id }, userId } = req
+    let body = req.body;
+    return User.findById(userId).lean()
+    .then(user => {
+        const index = user.lugaresCreados.findIndex(({_id})=>{ 
+            return id===_id.toString()})
+        console.log(user.lugaresCreados)
+        console.log(index)
+        if(index == -1){
+             res.status(401).send('Este usuario no tiene permiso para modificar el lugar seleccionado')
+        }else{
+           return Place.findByIdAndUpdate(id, { $set: body })
+            .then(doc => res.status(200).send('Lugar modificado'))
+            .catch(error => res.status(400).send('Ha ocurrido un error'))
+        }
+    })
+.catch(error => res.send('Se ha producido un error'))
+})
+    
 //Selecciona los lugares que le interesan (favoritos) y los asocia a su id.
 //usuarioInteresado lleva la misma Id que crea automáticamente moongodb
 placesRouter.get('/favoritesplaces/user/:placeId', verifyToken, (req, res) => {
@@ -155,26 +135,26 @@ placesRouter.get('/favoritesplaces/user/:placeId', verifyToken, (req, res) => {
 
     return User.findById(userId).lean()
         .then(user => {
-            if (!user) throw new Error(`user with id ${userId} not found`)
+            if (!user) throw new Error(`Usuario con id ${userId} no encontrado`)
             const { _id } = user
             let { favoritos } = user
             user = { userId: _id }
             return Place.findById(placeId).lean()
                 .then(place => {
-                    if (!place) throw new Error(`Place not found`)
+                    if (!place) throw new Error(`Lugar no encontrado`)
 
                     if (favoritos.length) {
                         const index = favoritos.findIndex(place => place._id.toString() === placeId)
                         index < 0 ? favoritos.push(placeId) : favoritos.splice(index, 1)
 
                         return User.updateOne({ _id }, { $set: { favoritos } })
-                            .then(result => res.send('Actualizado en tus lugares favoritos'))
+                            .then(result => res.status(200).send('Actualizado en tus lugares favoritos'))
 
                     } else {
                         favoritos.push(placeId)
 
                         return User.updateOne({ _id }, { $set: { favoritos } })
-                            .then(result => res.send('Actualizado en tus lugares favoritos'))
+                            .then(result => res.status(200).send('Actualizado en tus lugares favoritos'))
                     }
                 })
 

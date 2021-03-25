@@ -29,6 +29,10 @@ router.post('/register', (req, res)=>{
     validateEmail(email)
     validatePassword(password)
 
+    if(password.length < 6){
+        res.status(400).send('La contraseña debe tener al menos 6 caractares')
+    }
+
     const newUser = new User({
         username: username,
         email: email,
@@ -36,7 +40,7 @@ router.post('/register', (req, res)=>{
     })
     
     return newUser.save()
-    .then(user => res.send(user))
+    .then(user => res.status(201).send(user))
     .catch(console.error)
 
         

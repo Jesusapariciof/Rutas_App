@@ -17,6 +17,18 @@ guideRoute.get('/guide', (req, res)=>{
     })
 })
 
+//CREAR GET PARA COGER UNA GUÍA ESPECÍFICA.
+
+guideRoute.get('/guide/:id', (req, res)=>{
+    const {params: {id}}= req
+    Guide.findById(id, (error, guide)=>{
+        if(error){
+            res.status(400).send('Se ha producido un error')
+        }
+        res.json(guide)
+    })
+})
+
 //delete a guide
 
 guideRoute.delete('/guide/:id', (req, res)=>{
@@ -46,7 +58,7 @@ guideRoute.post('/guide', (req, res)=>{
     })
         
         return guide.save()
-        .then(guide => res.send (guide))
+        .then(guide => res.status(201).send (guide))
         .catch(console.error)
 
      })
