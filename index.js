@@ -19,13 +19,13 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     
     //Middleware
     app.use(express.json())
-    app.use(express.urlencoded())
+    app.use(express.urlencoded({ extended: true }))
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
     app.use(express.static("storage/imgs"))
 
-    const port = 3000
+    const port = 5000
     app.listen(port, ()=>{
         console.log(`El servidor se ha inicializado en el puerto ${port}`)
     })
