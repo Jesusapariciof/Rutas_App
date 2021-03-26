@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const placesRouter = require('./routes/placesRoute')
-
+const cors = require('cors')
 
 
 
@@ -24,6 +24,7 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     app.use(guideRoute)
     app.use(placesRouter)
     app.use(express.static("storage/imgs"))
+    app.use(cors())
 
     const port = 5000
     app.listen(port, ()=>{

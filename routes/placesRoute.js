@@ -66,6 +66,7 @@ placesRouter.get('/allplaces', (req, res) => {
         if (error) {
             res.status(400).send('Se ha producido un error')
         }
+         res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         res.json(places)
     })
 })

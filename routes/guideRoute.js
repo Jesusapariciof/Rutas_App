@@ -13,6 +13,7 @@ guideRoute.get('/guide', (req, res)=>{
         if(error){
             res.status(400).send('Se ha producido un error, inténtalo de nuevo')
         }
+        // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         res.json(guides)
     })
 })
