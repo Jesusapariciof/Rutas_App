@@ -1,34 +1,31 @@
 import axios from 'axios'
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
-const Guide = ()=>{
-    
-    const[lugar, setLugar]= useState([])
+const Guide = () => {
+
+    const [lugar, setLugar] = useState([])
     console.log(lugar)
-useEffect(()=>{
+    useEffect(() => {
 
-    axios.get('http://localhost:5000/guide')
-    .then(response =>setLugar(response.data))
-},[])
-    
+        axios.get('http://localhost:5000/guide')
+            .then(response => setLugar(response.data))
+    }, [])
 
-    return(
+
+    return (
         <div>
-        {
-            lugar.map((item)=>
-            <div>
-                <h1>LUGAR</h1>
-                <p>{item.name}</p>
-                <h3>Descripción</h3>
-                <p>{item.description}</p>
-                <h3>Imagen</h3>
-                <p>{item.image}</p>
-                
-                </div>
-            )
-        }
-        
+            <h1>Rutas turísticas</h1>
+            {
+                lugar.map((item, index) =>
+                    <div key={index}>
+                        <div className="d-grid gap-2 col-6 mx-auto">
+                            <button className="btn btn-primary" type="button">{item.name}</button>
+                        </div>
+                    </div>
+                )
+            }
+
         </div>
     )
-    }
+}
 export default Guide;

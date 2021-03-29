@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+h1{
+  color: red;
+}
+
+.lugares{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  height: 100px;
+  border: 1px solid red;
+}
+
+.lugares img{
+  height: 100px;
+  width: 120px;
+  border: 1px solid blue;
+}
+.crearbutton{
+  margin-bottom: 10px;
+}
+
+/* Guide */
+.btn.btn-primary{
+margin-bottom: 10px;
+
+}
+
+/*Place */
+.localidad{
+  border: 1px solid blue;
+  text-align: left;
+}
+.localidad h4{
+  border: 1px solid blue;
+  position: absolute;
+}
+.descripcion{
+  border: 1px solid red;
+  margin-top: 25px;
+  text-align: left;
+}
+.descripcion h4{
+  border: 1px solid blue;
+  position: absolute;
+}
+.imagen{
+margin: auto;
+margin-top: 25px;
+width: 90%;
+}
+.imagen img{
+  border-radius: 10%;
+}
+  
