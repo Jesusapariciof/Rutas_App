@@ -40,21 +40,20 @@ margin-bottom: 10px;
 
 /*Place */
 .localidad{
-  border: 1px solid blue;
   text-align: left;
 }
 .localidad h4{
   border: 1px solid blue;
   position: absolute;
+  
 }
 .descripcion{
-  border: 1px solid red;
-  margin-top: 25px;
+  margin-top: 40px;
   text-align: left;
 }
 .descripcion h4{
   border: 1px solid blue;
-  position: absolute;
+  
 }
 .imagen{
 margin: auto;

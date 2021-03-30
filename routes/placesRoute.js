@@ -79,6 +79,8 @@ placesRouter.get('/guideId/:id', (req, res) => {
             if (error) {
                 res.status(400).send('Ha habido un error')
             }
+            res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+
             res.json(places)
         })
 })
@@ -161,6 +163,20 @@ placesRouter.get('/favoritesplaces/user/:placeId', verifyToken, (req, res) => {
 
         })
 
+})
+
+//CREAR GET PARA COGER UN LUGAR ESPECÍFICO.
+
+placesRouter.get('/place/:id', (req, res)=>{
+    const {params: {id}}= req
+    Place.findById(id, (error, place)=>{
+        if(error){
+            res.status(400).send('Se ha producido un error')
+        }
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+
+        res.json(place)
+    })
 })
 
 

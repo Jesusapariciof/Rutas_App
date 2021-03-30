@@ -11,7 +11,6 @@ const Guide = () => {
             .then(response => setLugar(response.data))
     }, [])
 
-
     return (
         <div>
             <h1>Rutas turísticas</h1>

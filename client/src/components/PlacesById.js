@@ -9,7 +9,7 @@ const PlacesById = () => {
     console.log(guideId)
     useEffect(() => {
 
-        axios.get('http://localhost:5000/guideId/6053a563b099c81cf35bda4f')
+        axios.get('http://localhost:5000/guideId/605496744086d806bf865917')
             .then(response => setguideId(response.data))
 
     }, [])
@@ -24,12 +24,12 @@ const PlacesById = () => {
                 guideId.map((item, index) =>
                 
                     <div key={index} className="lugares">
-                        <img src="https://www.turismodeobservacion.com/media/fotografias/cascada-de-el-trabuquete-la-vera-caceres-81430-xl.jpg" className="card-img-top" alt="Foto_lugar" />
+                        <img src={item.image} className="card-img-top" alt="Foto_lugar" />
                         <div>
                             <h3>{item.name}</h3>
                             <Link to={'/place/' + item._id} >Saber más</Link>
                         </div>
-                        <button>Fav</button>
+                       
                     </div>
                     
                 )
