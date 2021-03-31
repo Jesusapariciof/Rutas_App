@@ -16,7 +16,7 @@ const { env: { SECRET } } = process
 
 
 //new places
-placesRouter.post('/places', verifyToken, multer.single('image'), async (req, res, next) => {
+placesRouter.post('/newplace',  multer.single('image'), async (req, res, next) => {
     // const { body: { name, town, description, guideId } } = req
 
     const name = req.body.name

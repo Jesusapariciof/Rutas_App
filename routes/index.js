@@ -42,6 +42,7 @@ router.post('/register', (req, res)=>{
     return newUser.save()
     .then(user => res.status(201).send(user))
     .catch(console.error)
+    
 
         
     })
@@ -70,6 +71,7 @@ router.post('/register', (req, res)=>{
 //Realizar un login con async await
     router.post('/login', async (req, res)=>{
         // const body = req.body
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         const user = await User.findOne({ email: req.body.email })
 
         if (user){
@@ -86,7 +88,7 @@ router.post('/register', (req, res)=>{
             }
         }  
          else{
-                res.status(401).json({error: 'El usuario no existe'})
+                res.status(400).json({error: 'El usuario no existe'})
             }
         })
 

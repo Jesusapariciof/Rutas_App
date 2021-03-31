@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 const placesRouter = require('./routes/placesRoute')
 const cors = require('cors')
 
-app.use(cors())
 
 
 const {env: {MONGODB_URL}}= process
@@ -21,11 +20,12 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     //Middleware
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
+    app.use(cors())
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
     app.use( express.static("storage/imgs"))
-   
+
     // app.use("*/uploads", express.static("uploads"));
     
    
