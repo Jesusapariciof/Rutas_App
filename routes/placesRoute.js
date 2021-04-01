@@ -16,15 +16,17 @@ const { env: { SECRET } } = process
 
 
 //new places
-placesRouter.post('/newplace',  multer.single('image'), async (req, res, next) => {
+placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, res, next) => {
     // const { body: { name, town, description, guideId } } = req
-
+    console.log('image', req.file.filename)
     const name = req.body.name
     const image = req.file.filename
     const town = req.body.town
     const description = req.body.description
     const guideId = req.body.guideId
-    const userId = req.userId
+    const userId = req.userId.id
+    try{
+
 
     validateName(name)
     validateTown(town)
@@ -44,19 +46,25 @@ placesRouter.post('/newplace',  multer.single('image'), async (req, res, next) =
             return res.status(400).send('Ha ocurrido un error')
         }
         if (!user) {
-            return res.status(400).send('No está autorizado')
+            return res.status(400).send('No hay usuario')
         }
         place.save()
             .then(newPlace => {
                 user.lugaresCreados.push(newPlace._id)
                 user.save()
-                    .then(() => { })
-                return res.status(201).send('Lugar creado')
+                    .then(() => { 
+
+                        return res.status(201).send('Lugar creado')
+                    })
             })
-            .catch(console.error)
-    })
+        })
+           
+        }
+        catch(error){
 
-
+            return res.status(400).send(error.message)
+        }
+            
 })
 
 //it finds all the places

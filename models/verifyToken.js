@@ -4,10 +4,12 @@ const { env: { SECRET } } = process
 
 function verifyToken(req, res, next){
 
-    const { headers: { authorization } } = req
-    console.log(req.headers)
+    // const { headers: { authorization } } = req
+    // console.log(req.headers)
     // Bearer <Token>
-    const token = authorization.replace('Bearer ', '')
+    // const token = authorization.replace('Bearer ', '')
+    
+    const token = req.headers["authorization"]
    
     if(!token){
         return res.status(401).json({
@@ -15,9 +17,18 @@ function verifyToken(req, res, next){
             message: 'No token provided'
         })
     }
-    const decoded= jwt.verify(token, SECRET);
-    req.userId = decoded.id;
-    next();
+    jwt.verify(token.split(" ")[1], SECRET, (err, decode)=>{
+        if(err){
+            return res.status(403).send("Tu token ha expirado")
+        }else{
+            req.userId= decode
+            next()
+        }
+        
+    })
+    // const decoded= jwt.verify(token, SECRET);
+    // req.userId = decoded.id;
+    // next();
 }
 
 module.exports = verifyToken;

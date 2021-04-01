@@ -10,26 +10,27 @@ import Register from './components/Register/Register'
 import Registration from './components/Login/Login';
 import Login from './components/Login/Login';
 import useToken from './hooks/hooks'
+import Guide from './components/Guide'
 
 
 function App() {
 
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
 
   return (
       <Router>
       <div className="App">
         <Switch>
-          <Route path= "/" exact component={PlacesById} />
+          <Route path= "/" exact component={Login} />
           <Route path= "/newplace" component={NewPlace} />
           <Route path="/place/:id" component={Places} />
           <Route path="/guideId" component={GuideID} />
           <Route path="/placesById" component={PlacesById} />
-          
+          <Route path="/guide" component={Guide} />
         </Switch>
       </div>
     </Router>

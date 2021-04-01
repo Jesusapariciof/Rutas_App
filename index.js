@@ -24,9 +24,9 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
-    app.use( express.static("storage/imgs"))
+    
 
-    // app.use("*/uploads", express.static("uploads"));
+     app.use("*/storage", express.static("storage"));
     
    
    
