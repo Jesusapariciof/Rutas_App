@@ -6,33 +6,33 @@ import FormData from 'form-data'
 // const token = JSON.parse(localStorage.getItem("token"))
 // console.log(token)
 
-function NewPlace () {
+function NewPlace() {
 
-    const [newImage, setNewImage]= useState({
-        image:[]
+    const [newImage, setNewImage] = useState({
+        image: []
     })
 
-    const handleChangeImage = (event) =>{
+    const handleChangeImage = (event) => {
         setNewImage({
             image: event.target.files[0]
         })
     }
 
-    const [newPlace, setNewPlace]= useState({
+    const [newPlace, setNewPlace] = useState({
         name: "",
         town: "",
         description: "",
         guideId: ""
     });
 
-    const handleChangeInput = (event)=>{
+    const handleChangeInput = (event) => {
         setNewPlace({
             ...newPlace,
             [event.target.name]: event.target.value
         })
     }
 
-    const createPlace = (event) =>{
+    const createPlace = (event) => {
         event.preventDefault()
 
         const formData = new FormData();
@@ -42,34 +42,35 @@ function NewPlace () {
         formData.append("description", newPlace.description)
         formData.append("guideId", newPlace.guideId)
 
-        axios.post('http://localhost:5000/newplace', formData, 
-        {
-            headers: {
-                'Content-Type': 'application/json', 
-                authorization: `Bearer ${localStorage.getItem('jwt-token')}`
-            }})
-            
-            .then((response) =>{
-                  setWellDone(response.data)
+        axios.post('http://localhost:5000/newplace', formData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+                }
+            })
+
+            .then((response) => {
+                setWellDone(response.data)
                 console.log(response.data)
             })
-            .catch((error)=>{
-            //   setErrorMessage(error.response.data)
-                console.log(error.response.data)
-                })
+            // .catch((error) => {
+            //     //   setErrorMessage(error.response.data)
+            //     console.log(error.response.data)
+            // })
     }
 
-        // const [errorMessage, setErrorMessage]= useState(" ")
-         const [wellDone, setWellDone]= useState(" ")
+    // const [errorMessage, setErrorMessage]= useState(" ")
+    const [wellDone, setWellDone] = useState(" ")
 
 
     return (
         <div>
             <h1>Crea y comparte tus lugares favoritos</h1>
 
-            <form action= "POST" onSubmit={createPlace} encType="multipart/form-data" >
+            <form action="POST" onSubmit={createPlace} encType="multipart/form-data" >
                 {wellDone && <div>{wellDone}</div>}
-                    <p>Nombre</p>
+                <p>Nombre</p>
                 <input name="name" type="text" onChange={handleChangeInput} />
                 <p>Imagen</p>
                 <input name="image" type="file" accept="image/*" onChange={handleChangeImage} />
@@ -78,10 +79,19 @@ function NewPlace () {
                 <p>Description</p>
                 <input name="description" type="text" onChange={handleChangeInput} />
                 <p>guideId</p>
-                <input name="guideId" type="text" onChange={handleChangeInput} />
-                
+                <label for="place-select">Elige una zona</label>
+
+                <select name="guideId" id="place-select" onChange={handleChangeInput}>
+                    <option value="">--Elige una zona--</option>
+                    <option value="604748f3b00d760602aef79b">La Vera</option>
+                    <option value="6048880166466a0408d4e53e">Las Hurdes</option>
+                    <option value="605496744086d806bf865917">Monfragüe</option>
+                   
+                </select>
+                {/* <input name="guideId" type="text" onChange={handleChangeInput} /> */}
+
                 <button onClick={createPlace}>Crear lugar</button>
-                
+
                 {/* {errorMessage && <div>{errorMessage}</div>} */}
 
             </form>

@@ -18,7 +18,7 @@ const { env: { SECRET } } = process
 //new places
 placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, res, next) => {
     // const { body: { name, town, description, guideId } } = req
-    console.log('image', req.file.filename)
+    
     const name = req.body.name
     const image = req.file.filename
     const town = req.body.town
@@ -87,7 +87,7 @@ placesRouter.get('/guideId/:id', (req, res) => {
             if (error) {
                 res.status(400).send('Ha habido un error')
             }
-            res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+            // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 
             res.json(places)
         })

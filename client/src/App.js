@@ -11,6 +11,8 @@ import Registration from './components/Login/Login';
 import Login from './components/Login/Login';
 import useToken from './hooks/hooks'
 import Guide from './components/Guide'
+import Perfil from './components/Perfil/Perfil';
+
 
 
 function App() {
@@ -28,9 +30,11 @@ function App() {
           <Route path= "/" exact component={Login} />
           <Route path= "/newplace" component={NewPlace} />
           <Route path="/place/:id" component={Places} />
-          <Route path="/guideId" component={GuideID} />
-          <Route path="/placesById" component={PlacesById} />
+          <Route path="/placesById/:id" component={PlacesById} />
+          {/* <Route path = "placesById" component={PlacesById} /> */}
           <Route path="/guide" component={Guide} />
+          <Route path = "/perfil" component = {Perfil} />
+          <Route path="/register" component = {Register} />
         </Switch>
       </div>
     </Router>

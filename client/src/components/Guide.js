@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import {Link} from 'react-router-dom'
 
-const Guide = () => {
+const Guide = (props) => {
 
     const [lugar, setLugar] = useState([])
     console.log(lugar)
@@ -17,9 +18,12 @@ const Guide = () => {
             {
                 lugar.map((item, index) =>
                     <div key={index}>
-                        <div className="d-grid gap-2 col-6 mx-auto">
+                        {/* <div className="d-grid gap-2 col-6 mx-auto">
                             <button className="btn btn-primary" type="button">{item.name}</button>
-                        </div>
+                        </div> */}
+
+                        <h3>{item.name}</h3>
+                        <Link to={'/placesById/' + item._id} >Saber más</Link>
                     </div>
                 )
             }

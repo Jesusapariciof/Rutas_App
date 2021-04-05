@@ -1,60 +1,9 @@
-// import axios from 'axios'
-// import {useEffect, useState} from 'react'
-
-// const Login = () =>{
-
-//     const [email, setEmail] = useState()
-//     const [password, setPassword] = useState()
-
-// useEffect(()=>{
-
-// axios({
-//     method: 'post',
-//     url: 'http://localhost:5000/login',
-//     data: {
-//       email, password
-//     }
-// })
-// .then((response) => {
-//     console.log(response);
-//   }, (error) => {
-//     console.log(error);
-//   });
-
-
-// },[])
-
-// const handleSubmit = (event) =>{
-//     event.preventDefault()
-// const usuario = {email, password}
-// console.log(usuario)
-// }
-
-
-
-// return(
-//     <div>
-//         <h1>Login</h1>
-//         <form onSubmit={handleSubmit}>
-//             <input type="email" name="email" onChange={event=>setEmail(event.target.value)}/>
-//             <input type="password" name="password" onChange={event=>setPassword(event.target.value)} />
-//             <button type="submit">Login</button>
-
-//         </form>
-
-//     </div>
-
-// )
-
-
-// }
-// export default Login;
-
 import axios from 'axios'
 import {useState} from 'react'
 import {ACCES_TOKEN_NAME} from '../constants/constants'
+import { withRouter } from "react-router-dom";
 
-const Login = ()=>{
+const Login = (props)=>{
 const [userLogin, setUserLogin]= useState({email:"", password:""})
 
 const emailLogin = (event) => setUserLogin({...userLogin, email: event.target.value})
@@ -67,12 +16,21 @@ const submitLogin = (e) =>{
     .then(response =>{
         setLoginCorrecto(response.data.message)
          localStorage.setItem(ACCES_TOKEN_NAME, response.data.token)
+         redirectToHome()
     })
 
 
 }
     const [errorLogin, setErrorLogin]=useState("")
     const [loginCorrecto, setLoginCorrecto]=useState("")
+    
+    const redirectToRegister = () => {
+        props.history.push('/register');
+    };
+    const redirectToHome = () => {
+        props.history.push('/guide');
+    };
+
 
 
     return(
@@ -90,7 +48,15 @@ const submitLogin = (e) =>{
             value={userLogin.password} 
             onChange={passwordLogin}/>
 
-            <button type="submit" onClick={submitLogin}>Iniciar Sesión</button>
+            <button type="submit" onClick={submitLogin} >Iniciar Sesión</button>
+
+           
+            <div className="mt-2">
+                <span>¿Aún no tienes cuenta? </span>
+                <span className="loginText" onClick={() => redirectToRegister()}>Regístrate</span>
+            </div>
+    
+
             {errorLogin && <div><p>{errorLogin}</p></div>}
             {loginCorrecto && <div><p>{loginCorrecto}</p></div>}
 
@@ -102,61 +68,7 @@ const submitLogin = (e) =>{
 
 }
 
-export default Login
-
-// import React, { useState } from "react";
-// import {AUTH_TOKEN} from "../constants/constants"
+export default withRouter(Login)
 
 
-// async function loginUser(credentials) {
-//     return fetch('http://localhost:5000/login', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(credentials)
-//     })
-//     .then(data => data.json())
-// }
-
-// export default function Login({ setToken }) {
-//     const [email, setEmail] = useState();
-//     const [password, setPassword] = useState();
-
-//     const handleSubmit = async e => {
-//         e.preventDefault();
-//         const token = await loginUser({
-//             email,
-//             password
-//         });
-//         setToken(token);
-//     }
-
-//   return (
-//     <div className="login-wrapper">
-//     <h1>Please Log In</h1>
-//       <form onSubmit={handleSubmit}>
-//         <fieldset>
-//           <label>
-//             <p>Email</p>
-//             <input name="email" type="email" onChange={e => setEmail(e.target.value)} />
-//           </label>
-//         </fieldset>
-//         <fieldset>
-//           <label>
-//             <p>Password</p>
-//             <input name="password" type="password" onChange={e => setPassword(e.target.value)} />
-//           </label>
-//         </fieldset>
-//         <button type="submit" >
-//           LOG IN
-//         </button>
-//       </form>
-
-//       <a href="/home"><p>Or create an account</p></a>
-      
-      
-//     </div>
-//   );
-// }
 
