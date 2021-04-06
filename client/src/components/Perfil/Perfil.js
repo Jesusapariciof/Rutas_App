@@ -1,39 +1,69 @@
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import {ACCES_TOKEN_NAME} from "../constants/constants"
+import { withRouter, Link } from "react-router-dom";
+const Perfil = (props)=>{
 
-const Perfil = ()=>{
+     const [user, setUser]= useState(null)
+     console.log(user)
 
-     const [myPlace, setMyPlace]= useState([])
-     console.log(myPlace)
+     useEffect(() => {
+        const token = localStorage.getItem(ACCES_TOKEN_NAME)
+        console.log(token)
+        axios.get(`http://localhost:5000/user/miperfil`,{
+            headers:{
+                authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log(response.data);
+                setUser(response.data);
+                
+            })
+            .catch(err => {
+                console.log(err.response);
+            }
+            );
+    }, []);
 
-useEffect(()=>{
-
-    axios.get('http://localhost:5000/allUsers')
-    .then(response => setMyPlace(response.data))
-    
-
-},[])
+     const logout = ()=>{
+         localStorage.removeItem(ACCES_TOKEN_NAME)
+        props.history.push('/')
+     }
 
 
     return(
         <div>
+            <button onClick={()=> logout()}>Cerrar Sesión</button>
             <h1>Lugares Creados</h1>
-
-            {
-                myPlace.map((item, index)=>
+            
+               {user &&
+                <div>
+                    <ul>
+                        {user.lugaresCreados.map(lugar =>{
+                            return (
+                                <div  className="lugares">
+                        
+                                <img src={`http://localhost:5000/storage/${lugar.image}`}className="card-img-top" alt="Foto_lugar" />
+                                <div>
+                                    <h3>{lugar.name}</h3>
+                                    <Link to={'/modify/' + lugar._id} >Modificar</Link>
+                                </div>
+                               
+                            </div>
+                            )
+                        })}
+                    </ul>
+                   </div>
                 
-                <div key={index}>
-                    <h3>{item.username}</h3>
 
-                </div>
-                )
-
+                   
+                    
             }
-
-
+            
         </div>
 
     )
 }
 
-export default Perfil;
+export default withRouter(Perfil);

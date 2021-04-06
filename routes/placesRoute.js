@@ -24,7 +24,7 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
     const town = req.body.town
     const description = req.body.description
     const guideId = req.body.guideId
-    const userId = req.userId.id
+    const userId = req.userId
     try{
 
 
@@ -70,13 +70,16 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
 //it finds all the places
 
 placesRouter.get('/allplaces', (req, res) => {
-    Place.find({}, (error, places) => {
+    Place.find({})
+    .populate('guideId')
+    .exec((error, places) => {
         if (error) {
             res.status(400).send('Se ha producido un error')
         }
          res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         res.json(places)
     })
+    
 })
 
 // find the places with the same guideId

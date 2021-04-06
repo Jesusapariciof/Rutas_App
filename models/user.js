@@ -22,14 +22,14 @@ const user = new Schema({
         trim: true,
         minlength: 6
     },
-    lugaresCreados: {
-        type: [Schema.Types.ObjectId],
+    lugaresCreados:[{
+        type: Schema.Types.ObjectId,
         ref: 'Place'
-    },
-    favoritos: {
-        type: [Schema.Types.ObjectId],
+    }],
+    favoritos: [{
+        type: Schema.Types.ObjectId,
         ref: 'Place'
-    },
+    }],
 
     
 

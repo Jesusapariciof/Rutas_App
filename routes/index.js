@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt')
 const { validateEmail, validatePassword} = require('../validations/validators')
 const jwt = require('jsonwebtoken')
 const user = require('../models/user')
+const verifyToken = require('../models/verifyToken')
 
 const { env: { SECRET } } = process
 
@@ -114,7 +115,20 @@ router.post('/register', (req, res)=>{
 //      })
 
 
-
+//Encuentra un usuario por Id
+router.get('/user/miperfil', verifyToken, (req, res)=>{
+   const id = req.userId
+    User.findById(id)
+    .populate('lugaresCreados')
+    .populate('favoritos')
+    .exec( function (error, user){
+       if(error){
+       return res.status(400).send('Se ha producido un error')
+        }
+        
+       return res.json(user)
+    })
+})
    
     
 

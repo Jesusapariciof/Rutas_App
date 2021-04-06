@@ -14,11 +14,15 @@ const PlacesById = (props) => {
 
     }, [])
 
+    const redirectToNewPlace = () =>{
+        props.history.push('/newplace')
+         }
+
     return (
         <div>
             
             <h1>Conoce tus lugares preferidos</h1>
-            <button className="crearbutton">Crear lugar</button>
+            <button className="crearbutton" onClick={() => redirectToNewPlace()}>Crear lugar</button>
             {
               
                 guideId.map((item, index) =>

@@ -1,17 +1,17 @@
 
 import { Route } from 'react-router-dom';
 import './App.css';
-import Places from './components/Places'
-import GuideID from './components/Guide'
-import PlacesById from './components/PlacesById';
+import Places from './components/Places/Places'
+import GuideID from './components/Guide/Guide'
+import PlacesById from './components/PlacesById/PlacesById';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import NewPlace from './components/NewPlaces/NewPlace';
 import Register from './components/Register/Register'
-import Registration from './components/Login/Login';
 import Login from './components/Login/Login';
 import useToken from './hooks/hooks'
-import Guide from './components/Guide'
+import Guide from './components/Guide/Guide'
 import Perfil from './components/Perfil/Perfil';
+import Modify from './components/Modify/Modify';
 
 
 
@@ -33,8 +33,9 @@ function App() {
           <Route path="/placesById/:id" component={PlacesById} />
           {/* <Route path = "placesById" component={PlacesById} /> */}
           <Route path="/guide" component={Guide} />
-          <Route path = "/perfil" component = {Perfil} />
+          <Route path = "/miperfil" component = {Perfil} />
           <Route path="/register" component = {Register} />
+          <Route path="/modify" component = {Modify} />
         </Switch>
       </div>
     </Router>

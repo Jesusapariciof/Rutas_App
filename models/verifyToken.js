@@ -21,7 +21,7 @@ function verifyToken(req, res, next){
         if(err){
             return res.status(403).send("Tu token ha expirado")
         }else{
-            req.userId= decode
+            req.userId= decode.id
             next()
         }
         
