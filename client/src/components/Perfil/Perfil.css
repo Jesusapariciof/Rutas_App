@@ -1,0 +1,19 @@
+.lugares-fav{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    margin-bottom: 28px;
+}
+.card{
+    margin-bottom: 50px;
+}
+.atras{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: left;
+    margin-left: 8px;
+}

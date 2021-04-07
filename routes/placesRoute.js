@@ -122,15 +122,17 @@ placesRouter.delete('/places/user/:id/delete', verifyToken, (req, res) => {
 })
 
 //modify a place
-placesRouter.put('/places/user/:id/modificar', verifyToken, (req, res) => {
+placesRouter.put('/places/user/:id/modificar',verifyToken, (req, res) => {
     const { params: { id }, userId } = req
+  
     let body = req.body;
+   console.log(body)
     return User.findById(userId).lean()
     .then(user => {
+        
         const index = user.lugaresCreados.findIndex(({_id})=>{ 
             return id===_id.toString()})
-        console.log(user.lugaresCreados)
-        console.log(index)
+   
         if(index == -1){
              res.status(401).send('Este usuario no tiene permiso para modificar el lugar seleccionado')
         }else{

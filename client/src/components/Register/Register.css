@@ -1,0 +1,12 @@
+
+.logo{
+    margin-top: 50px;
+    width: 80px;
+    height: 80px;
+}
+.email, .contraseña, .usuario{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  
+}

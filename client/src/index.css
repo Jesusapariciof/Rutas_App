@@ -11,22 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-h1{
-  color: red;
-}
 
 .lugares{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
-  height: 100px;
-  border: 1px solid red;
+  margin-bottom: 7px;
+  min-height: 105px;
+
+  border: rgb(48, 100, 179) 3px solid;
+  border-radius: 14px;
+}
+.listalugares{
+  
+  margin-right: 25px;
 }
 
 .lugares img{
   height: 100px;
   width: 120px;
-  border: 1px solid blue;
+  border-radius: 10px;
 }
 .crearbutton{
   margin-bottom: 10px;

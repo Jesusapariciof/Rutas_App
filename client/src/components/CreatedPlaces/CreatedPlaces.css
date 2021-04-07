@@ -1,0 +1,12 @@
+button.btn.btn-danger{
+    margin-right: 1px;
+    
+}
+.acciones{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.lugarescreados{
+    margin: 10px 0px 20px 0px;
+}

@@ -1,69 +1,47 @@
-import axios from 'axios'
-import {useEffect, useState} from 'react'
 import {ACCES_TOKEN_NAME} from "../constants/constants"
 import { withRouter, Link } from "react-router-dom";
-const Perfil = (props)=>{
+import './Perfil.css'
+import logo from '../../assets/flecha.jpeg' 
 
-     const [user, setUser]= useState(null)
-     console.log(user)
+const Perfil =(props)=>{
 
-     useEffect(() => {
-        const token = localStorage.getItem(ACCES_TOKEN_NAME)
-        console.log(token)
-        axios.get(`http://localhost:5000/user/miperfil`,{
-            headers:{
-                authorization: `Bearer ${token}`
-            }
-        })
-            .then(response => {
-                console.log(response.data);
-                setUser(response.data);
-                
-            })
-            .catch(err => {
-                console.log(err.response);
-            }
-            );
-    }, []);
-
-     const logout = ()=>{
-         localStorage.removeItem(ACCES_TOKEN_NAME)
-        props.history.push('/')
-     }
-
+    const logout = ()=>{
+        localStorage.removeItem(ACCES_TOKEN_NAME)
+       props.history.push('/')
+    }
+    const redirectToLugaresCreados = () =>{
+        props.history.push('/createdplaces')
+    }
+    const redirectToFavoritos = () =>{
+        props.history.push('/favoritos')
+    }
+    const redirectToHome = () =>{
+        props.history.push('/home')
+    }
 
     return(
         <div>
-            <button onClick={()=> logout()}>Cerrar Sesión</button>
-            <h1>Lugares Creados</h1>
-            
-               {user &&
-                <div>
-                    <ul>
-                        {user.lugaresCreados.map(lugar =>{
-                            return (
-                                <div  className="lugares">
-                        
-                                <img src={`http://localhost:5000/storage/${lugar.image}`}className="card-img-top" alt="Foto_lugar" />
-                                <div>
-                                    <h3>{lugar.name}</h3>
-                                    <Link to={'/modify/' + lugar._id} >Modificar</Link>
-                                </div>
-                               
-                            </div>
-                            )
-                        })}
-                    </ul>
-                   </div>
-                
+            <div className="atras" >
+            <img onClick={()=>redirectToHome()} src={logo} alt="boton atrás"></img>
+            </div>
+            <div className="lugares-fav"> 
+            <div className="card">
+                <div className="card-body">
+                <h1 onClick={()=>redirectToLugaresCreados()}>Lugares Creados</h1>
+                </div>
+            </div>
+            <div className="card">
+                <div className="card-body">
+            <h1 onClick={()=>redirectToFavoritos()}>Favoritos</h1>
+            </div>
+            </div>
+            </div>
 
-                   
-                    
-            }
-            
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button className="btn btn-primary me-md-2" onClick={()=> logout()}>Cerrar Sesión</button>
+            </div>
+
         </div>
-
     )
 }
-
-export default withRouter(Perfil);
+export default withRouter (Perfil)

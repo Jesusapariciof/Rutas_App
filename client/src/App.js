@@ -12,6 +12,8 @@ import useToken from './hooks/hooks'
 import Guide from './components/Guide/Guide'
 import Perfil from './components/Perfil/Perfil';
 import Modify from './components/Modify/Modify';
+import Home from './components/Home/Home';
+import CreatedPlaces from './components/CreatedPlaces/CreatedPlaces';
 
 
 
@@ -36,6 +38,8 @@ function App() {
           <Route path = "/miperfil" component = {Perfil} />
           <Route path="/register" component = {Register} />
           <Route path="/modify" component = {Modify} />
+          <Route path="/home" component={Home} />
+          <Route path="/createdplaces" component={CreatedPlaces} />
         </Switch>
       </div>
     </Router>

@@ -1,0 +1,22 @@
+h1{
+color: darkblue;
+}
+.email, .contraseña{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    width: 200px;
+    margin: auto;
+}
+.loginText{
+    color: darkblue
+}
+.logo{
+    margin-top: 50px;
+    width: 80px;
+    height: 80px;
+}
+

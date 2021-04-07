@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import FormData from 'form-data'
+import './NewPlace.css'
 
 
 // const token = JSON.parse(localStorage.getItem("token"))
@@ -67,19 +68,19 @@ function NewPlace() {
     return (
         <div>
             <h1>Crea y comparte tus lugares favoritos</h1>
-
+            
             <form action="POST" onSubmit={createPlace} encType="multipart/form-data" >
                 {wellDone && <div>{wellDone}</div>}
                 <p>Nombre</p>
                 <input name="name" type="text" onChange={handleChangeInput} />
                 <p>Imagen</p>
-                <input name="image" type="file" accept="image/*" onChange={handleChangeImage} />
+                <input name="image" type="file" accept="image/*" required onChange={handleChangeImage} />
                 <p>Población</p>
                 <input name="town" type="text" onChange={handleChangeInput} />
                 <p>Description</p>
                 <input name="description" type="text" onChange={handleChangeInput} />
-                <p>guideId</p>
-                <label for="place-select">Elige una zona</label>
+                <p>Elige una zona</p>
+                <label for="place-select"></label>
 
                 <select name="guideId" id="place-select" onChange={handleChangeInput}>
                     <option value="">--Elige una zona--</option>
@@ -89,9 +90,9 @@ function NewPlace() {
                    
                 </select>
                 {/* <input name="guideId" type="text" onChange={handleChangeInput} /> */}
-
-                <button onClick={createPlace}>Crear lugar</button>
-
+                <div>
+                <button className="btn btn-primary" onClick={createPlace}>Crear lugar</button>
+                </div>
                 {/* {errorMessage && <div>{errorMessage}</div>} */}
 
             </form>

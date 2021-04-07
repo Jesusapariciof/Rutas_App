@@ -2,6 +2,8 @@ import axios from 'axios'
 import {useState} from 'react'
 import {ACCES_TOKEN_NAME} from '../constants/constants'
 import { withRouter } from "react-router-dom";
+import './Register.css'
+import logo from '../../assets/mapa-rutas_caceres.png' 
 
 const Register = (props)=>{
 
@@ -33,35 +35,50 @@ const Register = (props)=>{
 
     return(
 
-         <div>
-        <h1>Registro</h1> 
-     
+         <div className="bloque">
+         <img className="logo" src={logo} alt="img"></img>
+     <div className="registro">
+     <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
+     <h1>Registro</h1> 
      <form action = "POST" onSubmit={submitRegister}>
 
+        <div className="usuario">
         <p>Usuario</p>
         <input type="text" 
          name="username" 
          value={register.username} 
          onChange={usernameRegister}/>
+        </div>
+
+        <div className="email">
         <p>Email</p>
          <input type="email" 
          name="email" 
          value={register.email} 
          onChange={emailRegister}/>
+         </div>
+
+         <div className="contraseña">
         <p>Contraseña</p>
          <input type="password" 
          name="password" 
          value={register.password} 
          onChange={passwordRegister}/>
+         </div>
          <br></br>
 
-         <button type="submit" onClick={submitRegister}>Registrarse</button>
+         <button className="btn btn-primary btn-lg" type="submit" onClick={submitRegister}>Registrarse</button>
+         <div className="mt-2">
+                <span>¿Ya tienes cuenta? </span>
+                <span className="loginText" onClick={() => redirectToLogin()}>Log in</span>
+            </div>
          {errorRegister && <div><p>{errorRegister}</p></div>}
          {registerCorrecto && <div><p>{registerCorrecto}</p></div>}
 
-
      </form>
      </div>
+     </div>
+         </div>
 
     )
 
