@@ -37,7 +37,7 @@ function App() {
           <Route path="/guide" component={Guide} />
           <Route path = "/miperfil" component = {Perfil} />
           <Route path="/register" component = {Register} />
-          <Route path="/modify" component = {Modify} />
+          <Route path="/modify/:id" component = {Modify} />
           <Route path="/home" component={Home} />
           <Route path="/createdplaces" component={CreatedPlaces} />
         </Switch>

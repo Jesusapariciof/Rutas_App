@@ -5,7 +5,7 @@ import './PlacesById.css'
 
 
 const PlacesById = (props) => {
-
+    console.log(props)
     const [guideId, setguideId] = useState([])
     console.log(guideId)
     useEffect(() => {
