@@ -19,6 +19,12 @@ const submitLogin = (e) =>{
         setLoginCorrecto(response.data.message)
          localStorage.setItem(ACCES_TOKEN_NAME, response.data.token)
          redirectToHome()
+         
+    })
+    .catch((error)=>{
+            setErrorLogin(error.response.data)
+            console.log(error.response.data)
+                
     })
 
 
@@ -32,8 +38,6 @@ const submitLogin = (e) =>{
     const redirectToHome = () => {
         props.history.push('/home');
     };
-
-
 
     return(
         <div>
@@ -68,9 +72,8 @@ const submitLogin = (e) =>{
                 <span className="loginText" onClick={() => redirectToRegister()}>Regístrate</span>
             </div>
     
-
-            {errorLogin && <div><p>{errorLogin}</p></div>}
-            {loginCorrecto && <div><p>{loginCorrecto}</p></div>}
+            {errorLogin && <div><p className="error">{errorLogin}</p></div>}
+          
 
         </form>
         </div>

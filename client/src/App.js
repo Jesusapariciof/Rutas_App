@@ -14,6 +14,8 @@ import Perfil from './components/Perfil/Perfil';
 import Modify from './components/Modify/Modify';
 import Home from './components/Home/Home';
 import CreatedPlaces from './components/CreatedPlaces/CreatedPlaces';
+import Nav from './components/Nav/Nav'
+
 
 
 
@@ -27,6 +29,7 @@ function App() {
 
   return (
       <Router>
+        <Nav />
       <div className="App">
         <Switch>
           <Route path= "/" exact component={Login} />

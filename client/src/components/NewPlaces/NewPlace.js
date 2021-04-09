@@ -55,10 +55,10 @@ function NewPlace() {
                 setWellDone(response.data)
                 console.log(response.data)
             })
-            // .catch((error) => {
-            //     //   setErrorMessage(error.response.data)
-            //     console.log(error.response.data)
-            // })
+            .catch((error) => {
+                //    setErrorMessage(error.response.data)
+                // console.log(error.response.data)
+            })
     }
 
     // const [errorMessage, setErrorMessage]= useState(" ")
@@ -70,7 +70,6 @@ function NewPlace() {
             <h1>Crea y comparte tus lugares favoritos</h1>
             
             <form action="POST" onSubmit={createPlace} encType="multipart/form-data" >
-                {wellDone && <div>{wellDone}</div>}
                 <p>Nombre</p>
                 <input name="name" type="text" onChange={handleChangeInput} />
                 <p>Imagen</p>

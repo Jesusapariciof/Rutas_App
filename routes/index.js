@@ -28,7 +28,7 @@ router.post('/register', (req, res)=>{
     const {body: {username, email, password}} = req
     //  const hashedPassword = await bcrypt.hash(req.body.password, 10)
     validateEmail(email)
-    validatePassword(password)
+    // validatePassword(password)
 
     if(password.length < 6){
         res.status(400).send('La contraseña debe tener al menos 6 caractares')
@@ -85,14 +85,16 @@ router.post('/register', (req, res)=>{
                 res.json({auth: true, token})
                 // res.status(200).json({message: 'Contraseña correcta'})
             } else{
-                res.status(400).json({error: 'Contraseña Incorrecta'})
+
+                 res.status(400).send( 'Contraseña Incorrecta')
+                
             }
         }  
          else{
-                res.status(400).json({error: 'El usuario no existe'})
+                res.status(400).send('El usuario no existe')
             }
         })
-
+        
 
 //Realizar un login sin async await
 // router.post('/login', (req, res)=>{

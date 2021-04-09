@@ -23,6 +23,12 @@ const Register = (props)=>{
              console.log(response.data)
              redirectToLogin()
         })
+
+        .catch((error)=>{
+            setErrorRegister(error.response.data)
+            console.log(error.response.data)
+                
+    })
     
          }
     
@@ -72,8 +78,8 @@ const Register = (props)=>{
                 <span>¿Ya tienes cuenta? </span>
                 <span className="loginText" onClick={() => redirectToLogin()}>Log in</span>
             </div>
-         {errorRegister && <div><p>{errorRegister}</p></div>}
-         {registerCorrecto && <div><p>{registerCorrecto}</p></div>}
+         {errorRegister && <div><p className="error">{errorRegister}</p></div>}
+         
 
      </form>
      </div>

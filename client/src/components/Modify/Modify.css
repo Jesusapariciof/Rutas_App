@@ -1,0 +1,11 @@
+.link{
+    font: bold;
+    font-weight: bolder;
+    border: 2px solid tomato;
+    background-color: red;
+    color: white;
+}
+.correcto{
+    color: darkblue;
+
+}

@@ -10,6 +10,8 @@ color: darkblue;
 input{
     width: 200px;
     margin: auto;
+    border: 4px solid darkblue;
+    
 }
 .loginText{
     color: darkblue
@@ -18,5 +20,9 @@ input{
     margin-top: 50px;
     width: 80px;
     height: 80px;
+}
+.error{
+    color: tomato;
+    font: bold;
 }
 

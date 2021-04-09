@@ -125,6 +125,13 @@ placesRouter.delete('/places/user/:id/delete', verifyToken, (req, res) => {
 placesRouter.put('/places/user/:id/modificar',verifyToken, (req, res) => {
     const { params: { id }, userId } = req
   
+    // const body={
+    //     name:req.body.name,
+    //     image: req.file.filename,
+    //     town: req.body.town,
+    //     description:req.body.description,
+    //     guideId: req.body.guideId
+    // }
     let body = req.body;
    console.log(body)
     return User.findById(userId).lean()
@@ -137,7 +144,7 @@ placesRouter.put('/places/user/:id/modificar',verifyToken, (req, res) => {
              res.status(401).send('Este usuario no tiene permiso para modificar el lugar seleccionado')
         }else{
            return Place.findByIdAndUpdate(id, { $set: body })
-            .then(doc => res.status(200).send('Lugar modificado'))
+            .then(doc => res.status(200).send('Lugar modificado correctamente'))
             .catch(error => res.status(400).send('Ha ocurrido un error'))
         }
     })

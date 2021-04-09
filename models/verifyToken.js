@@ -19,7 +19,7 @@ function verifyToken(req, res, next){
     }
     jwt.verify(token.split(" ")[1], SECRET, (err, decode)=>{
         if(err){
-            return res.status(403).send("Tu token ha expirado")
+            return res.status(403).send("Inicia sesión para realizar cambios")
         }else{
             req.userId= decode.id
             next()
