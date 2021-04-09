@@ -60,7 +60,7 @@ const CreatedPlace = (props) => {
 
 
     return (
-        <div>
+        <div className="fondo-creados">
              
             <img className="atras" onClick={()=>redirectToHome()} src={logo} alt="boton atrás"></img>
             

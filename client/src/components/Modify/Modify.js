@@ -7,14 +7,31 @@ const Modify = (props) => {
 console.log(props)
     const [modificarLugar, setModificarLugar] = useState({})
 
+    const [newImage, setNewImage] = useState({
+        image: []
+    })
+
+
+    const handleChangeImage = (event) => {
+        setNewImage({
+            image: event.target.files[0]
+        })
+    }
+    const formData = new FormData();
+    formData.append("image", newImage.image)
+
     const editarRuta = (event) => {
         event.preventDefault()
 
-        axios.put(`http://localhost:5000/places/user/` + props.match.params.id + `/modificar`, modificarLugar, {
+        
+        
+
+        axios.put(`http://localhost:5000/places/user/` + props.match.params.id + `/modificar`,modificarLugar, {
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('jwt-token')}`
-            }
+            },
+            formData
         }
         )
 
@@ -22,10 +39,10 @@ console.log(props)
                 setModificarCorrecto(response.data)
                 console.log(response.data)
             })
-            .catch(error => {
-                setErrorModificar(error.response.data)
-                console.log(error.response.data)
-            })
+            // .catch(error => {
+            //     setErrorModificar(error.response.data)
+            //     console.log(error.response.data)
+            // })
     }
 
     const changeInput = (event) => {
@@ -39,7 +56,7 @@ console.log(props)
         props.history.push('/createdplaces')
     }
 
-    const [errorModificar, setErrorModificar]=useState("")
+    // const [errorModificar, setErrorModificar]=useState("")
     const [modificarCorrecto, setModificarCorrecto]=useState("")
 
 
@@ -53,7 +70,7 @@ console.log(props)
                 <p>Nombre</p>
                 <input name="name" type="text" value={modificarLugar.name} onChange={changeInput} placeholder={props.match.params.name} />
                 <p>Imagen</p>
-                <input name="image" type="file" accept="image/*" value={modificarLugar.image} onChange={changeInput} />
+                <input name="image" type="file" accept="image/*" required onChange={handleChangeImage} />
                 <p>Población</p>
                 <input name="town" type="text" value={modificarLugar.town} onChange={changeInput} />
                 <p>Description</p>
@@ -70,7 +87,7 @@ console.log(props)
                     <button className="btn btn-primary" type="submit" onClick={editarRuta}>Modificar lugar</button>
                 </div>
             </form>
-            {errorModificar && <div><p className="error">{errorModificar}</p></div>}
+            {/* {errorModificar && <div><p className="error">{errorModificar}</p></div>} */}
             {modificarCorrecto && <div><p className="correcto">{modificarCorrecto}</p></div>}
             <div className="mt-2">
                 <span>Vuelve a  </span>

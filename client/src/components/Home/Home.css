@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #d9e4f5;
-    background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
-
+    height: 95vh;
+    
+}
+.fondo{
+   background-image: url('/src/assets/avenue-3464777_1280.jpeg');
 }

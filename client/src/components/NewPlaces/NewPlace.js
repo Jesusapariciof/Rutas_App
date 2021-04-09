@@ -2,12 +2,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import FormData from 'form-data'
 import './NewPlace.css'
+import { withRouter } from "react-router-dom";
 
 
-// const token = JSON.parse(localStorage.getItem("token"))
-// console.log(token)
 
-function NewPlace() {
+
+function NewPlace(props) {
 
     const [newImage, setNewImage] = useState({
         image: []
@@ -56,32 +56,35 @@ function NewPlace() {
                 console.log(response.data)
             })
             .catch((error) => {
-                //    setErrorMessage(error.response.data)
-                // console.log(error.response.data)
+                   setErrorMessage(error.response.data)
+                console.log(error.response.data)
             })
     }
 
-    // const [errorMessage, setErrorMessage]= useState(" ")
+    const [errorMessage, setErrorMessage]= useState(" ")
     const [wellDone, setWellDone] = useState(" ")
 
+    const redirectToLugaresCreados = () => {
+        props.history.push('/createdplaces')
+    }
 
     return (
-        <div>
-            <h1>Crea y comparte tus lugares favoritos</h1>
+        <div className="card">
+            <h1 className="titulo">Crea y comparte tus lugares favoritos</h1>
             
-            <form action="POST" onSubmit={createPlace} encType="multipart/form-data" >
+            <form action="POST" className="card-body" onSubmit={createPlace} encType="multipart/form-data" >
                 <p>Nombre</p>
-                <input name="name" type="text" onChange={handleChangeInput} />
+                <input name="name" type="text" required onChange={handleChangeInput} />
                 <p>Imagen</p>
                 <input name="image" type="file" accept="image/*" required onChange={handleChangeImage} />
                 <p>Población</p>
-                <input name="town" type="text" onChange={handleChangeInput} />
+                <input name="town" type="text"required onChange={handleChangeInput} />
                 <p>Description</p>
-                <input name="description" type="text" onChange={handleChangeInput} />
+                <input name="description" type="text" required onChange={handleChangeInput} />
                 <p>Elige una zona</p>
                 <label for="place-select"></label>
 
-                <select name="guideId" id="place-select" onChange={handleChangeInput}>
+                <select name="guideId" id="place-select" required onChange={handleChangeInput}>
                     <option value="">--Elige una zona--</option>
                     <option value="604748f3b00d760602aef79b">La Vera</option>
                     <option value="6048880166466a0408d4e53e">Las Hurdes</option>
@@ -93,7 +96,12 @@ function NewPlace() {
                 <button className="btn btn-primary" onClick={createPlace}>Crear lugar</button>
                 </div>
                 {/* {errorMessage && <div>{errorMessage}</div>} */}
-
+                {wellDone && <div><p className="correcto">{wellDone}</p></div>}
+                {errorMessage && <div><p className="error">{errorMessage}</p></div>}
+            <div className="mt-2">
+                <span>Vuelve a  </span>
+                <span className="link" onClick={() => redirectToLugaresCreados()}>MIS LUGARES</span>
+            </div>
             </form>
 
         </div>
@@ -101,4 +109,4 @@ function NewPlace() {
     )
 }
 
-export default NewPlace;
+export default withRouter(NewPlace);

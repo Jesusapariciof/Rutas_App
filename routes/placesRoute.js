@@ -57,12 +57,13 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
                         return res.status(201).send('Lugar creado')
                     })
             })
+            
         })
            
         }
         catch(error){
 
-            return res.status(400).send(error.message)
+            return res.status(400).send('Por favor, rellene todos los campos')
         }
             
 })
@@ -124,14 +125,7 @@ placesRouter.delete('/places/user/:id/delete', verifyToken, (req, res) => {
 //modify a place
 placesRouter.put('/places/user/:id/modificar',verifyToken, (req, res) => {
     const { params: { id }, userId } = req
-  
-    // const body={
-    //     name:req.body.name,
-    //     image: req.file.filename,
-    //     town: req.body.town,
-    //     description:req.body.description,
-    //     guideId: req.body.guideId
-    // }
+ 
     let body = req.body;
    console.log(body)
     return User.findById(userId).lean()

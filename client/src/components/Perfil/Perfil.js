@@ -20,7 +20,7 @@ const Perfil =(props)=>{
     }
 
     return(
-        <div>
+        <div className="fondo-perfil">
             <div className="atras" >
             <img onClick={()=>redirectToHome()} src={logo} alt="boton atrás"></img>
             </div>

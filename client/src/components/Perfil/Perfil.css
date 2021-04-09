@@ -1,5 +1,5 @@
 .lugares-fav{
-    border: 1px solid red;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,4 +16,9 @@
     display: flex;
     justify-content: left;
     margin-left: 8px;
+}
+.fondo-perfil{
+ background-image: url('/src/assets/detective-152085__480.webp');
+ background-repeat: no-repeat;
+     
 }

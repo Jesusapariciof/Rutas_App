@@ -21,12 +21,7 @@ import Nav from './components/Nav/Nav'
 
 function App() {
 
-  // const { token, setToken } = useToken();
-
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
-
+  
   return (
       <Router>
         <Nav />
