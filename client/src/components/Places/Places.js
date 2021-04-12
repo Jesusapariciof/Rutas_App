@@ -28,7 +28,7 @@ console.log(props)
                         <h4 className="letra">{places.description}</h4>
                     </div>
                     <div className="imagen">
-                        <h3>Imagen</h3>
+                        {/* <h3>Imagen</h3> */}
                         <img src={`http://localhost:5000/storage/${places.image}`} className="card-img-top" alt="Foto_lugar" />
                     </div>
                 </div>

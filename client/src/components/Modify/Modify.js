@@ -75,13 +75,21 @@ console.log(props)
                 <input name="town" type="text" value={modificarLugar.town} onChange={changeInput} />
                 <p>Description</p>
                 <input name="description" type="text" value={modificarLugar.description} onChange={changeInput} />
-                <p>guideId</p>
+                <p></p>
                 <label for="place-select">Elige una zona</label>
                 <select name="guideId" id="place-select" value={modificarLugar.guideId} onChange={changeInput} >
-                    <option value="">--Elige una zona--</option>
+                <option value="">--Elige una zona--</option>
                     <option value="604748f3b00d760602aef79b">La Vera</option>
                     <option value="6048880166466a0408d4e53e">Las Hurdes</option>
                     <option value="605496744086d806bf865917">Monfragüe</option>
+                    <option value="607413f953cc88070c69eb7a">Cáceres</option>
+                    <option value="6074141d53cc88070c69eb7b">Miajadas-Trujillo</option>
+                    <option value="6074143653cc88070c69eb7c">Montánchez-Tamuja</option>
+                    <option value="6074145453cc88070c69eb7d">Plasencia</option>
+                    <option value="6074146e53cc88070c69eb7e">Sierra de Gata</option>
+                    <option value="607414a753cc88070c69eb80">Granadilla</option>
+                    <option value="607414e453cc88070c69eb83">Valle del Jerte</option>
+                    <option value="607414f253cc88070c69eb84">Villuercas Ibores Jara</option>
                 </select>
                 <div>
                     <button className="btn btn-primary" type="submit" onClick={editarRuta}>Modificar lugar</button>

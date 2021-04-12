@@ -15,7 +15,7 @@ const Guide = (props) => {
 
     return (
         <div className="fondo-guia">
-            <h1>Rutas turísticas</h1>
+            <br></br>
             {
                 lugar.map((item, index) =>
                     <div  key={index}>
@@ -23,10 +23,12 @@ const Guide = (props) => {
                             <button className="btn btn-primary" type="button">{item.name}</button>
                         </div> */}
                         <div className="guia">
+                        {/* <div className="d-grid gap-2 col-6 mx-auto"> */}
                         {/* <h3>{item.name}</h3> */}
-                        <Link className="saber" to={'/placesById/' + item._id} ><h5>{item.name} </h5> </Link>
+                      <button className="btn btn-outline-light"> <Link className="saber" to={'/placesById/' + item._id} ><h5>{item.name} </h5> </Link> </button> 
                         </div>
                     </div>
+                    // </div>
                 )
             }
 

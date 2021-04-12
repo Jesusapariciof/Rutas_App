@@ -1,26 +1,40 @@
 .guia{
-    border-bottom: 8px outset rgba(28,110,164,0.72);
+    /* border-bottom: 8px outset rgba(28,110,164,0.72);
     border-radius: 23px 40px 40px 23px;
     margin:20px 2px 20px 2px;
     display: flex;
     text-align: center;
     justify-content: center;
     padding: 2px;
-   
+    background-image: url('/src/assets/mapa-rutas_caceres.png'); */
+   display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 10px;
 
   
     
 }
 .saber{
-    font-size: 20px;
+    /* font-size: 20px;
     text-decoration: none;
     font-family: 'Courier New', Courier, monospace;
-    font: bold;
+    font: bold; */
+
+    color: #FFFFFF;
+    background: #FFFFFF;
+    text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
+    text-decoration: none;
+ 
+    
     
     
 }
-/* .fondo-guia{
+ .fondo-guia{
     background-image: url('/src/assets/mountains-1587287_1280.webp');
-    background-size: cover;
-    height: 100vh;
-} */
+    background-repeat: repeat;
+} 
+
+.btn.btn-outline-light{
+    width: 300px;
+}
