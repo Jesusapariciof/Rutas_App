@@ -56,16 +56,19 @@ function NewPlace(props) {
                 console.log(response.data)
             })
             .catch((error) => {
-                   setErrorMessage(error.response.data)
+                   setBotonLogin(error.response.data)
                 console.log(error.response.data)
             })
     }
 
-    const [errorMessage, setErrorMessage]= useState(" ")
     const [wellDone, setWellDone] = useState(" ")
+    const [botonLogin, setBotonLogin]= useState(" ")
 
     const redirectToLugaresCreados = () => {
         props.history.push('/createdplaces')
+    }
+    const redirectToLogin = () => {
+        props.history.push('/')
     }
 
     return (
@@ -89,17 +92,25 @@ function NewPlace(props) {
                     <option value="604748f3b00d760602aef79b">La Vera</option>
                     <option value="6048880166466a0408d4e53e">Las Hurdes</option>
                     <option value="605496744086d806bf865917">Monfragüe</option>
+                    <option value="607413f953cc88070c69eb7a">Cáceres</option>
+                    <option value="6074141d53cc88070c69eb7b">Miajadas-Trujillo</option>
+                    <option value="6074143653cc88070c69eb7c">Montánchez-Tamuja</option>
+                    <option value="6074145453cc88070c69eb7d">Plasencia</option>
+                    <option value="6074146e53cc88070c69eb7e">Sierra de Gata</option>
+                    <option value="607414a753cc88070c69eb80">Granadilla</option>
+                    <option value="607414e453cc88070c69eb83">Valle del Jerte</option>
+                    <option value="607414f253cc88070c69eb84">Villuercas Ibores Jara</option>
                    
                 </select>
                 {/* <input name="guideId" type="text" onChange={handleChangeInput} /> */}
                 <div>
                 <button className="btn btn-primary" onClick={createPlace}>Crear lugar</button>
                 </div>
-                {/* {errorMessage && <div>{errorMessage}</div>} */}
+                
                 {wellDone && <div><p className="correcto">{wellDone}</p></div>}
-                {errorMessage && <div><p className="error">{errorMessage}</p></div>}
+                {botonLogin &&  <p className="correcto" onClick={() => redirectToLogin()}> {botonLogin}</p> }
             <div className="mt-2">
-                <span>Vuelve a  </span>
+                <span>Ir a  </span>
                 <span className="link" onClick={() => redirectToLugaresCreados()}>MIS LUGARES</span>
             </div>
             </form>

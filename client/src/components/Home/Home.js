@@ -17,8 +17,8 @@ const Home = (props)=>{
         
         <div className="botones">
         <div className="d-grid gap-2">
-            <button className="btn btn-primary" onClick={()=>redirectToPerfil()}>Mi Perfil</button>
-            <button className="btn btn-primary" onClick={()=> redirectToGuias()}>Guías Turísticas</button>
+            <button className="btn btn-light" onClick={()=>redirectToPerfil()}>Mi Perfil</button>
+            <button className="btn btn-light" onClick={()=> redirectToGuias()}>Guías Turísticas</button>
         </div>
         </div>
         </div>

@@ -62,7 +62,7 @@ const CreatedPlace = (props) => {
     return (
         <div className="fondo-creados">
              
-            <img className="atras" onClick={()=>redirectToHome()} src={logo} alt="boton atrás"></img>
+            {/* <img className="atras" onClick={()=>redirectToHome()} src={logo} alt="boton atrás"></img> */}
             
             {/* <button onClick={() => logout()}>Cerrar Sesión</button> */}
             <div className="lugarescreados">
@@ -71,7 +71,7 @@ const CreatedPlace = (props) => {
 
             {user &&
                 <div>
-                    <ul>
+                    
                         {user.lugaresCreados.map(lugar => {
                             return (
                                 <div className="listalugares">
@@ -81,7 +81,7 @@ const CreatedPlace = (props) => {
                                     <div>
                                         <h3>{lugar.name}</h3>
                                         <div className="acciones">
-                                        < Link to={'/modify/' + lugar._id} >Modificar</Link>
+                                        <button className="btn btn-warning"> < Link className="modificar" to={'/modify/' + lugar._id} >Modificar</Link> </button>
                                         <button className="btn btn-danger" onClick={() => handleDeletePlace(lugar._id)}>Eliminar</button>
                                     </div>
                                     </div>
@@ -89,7 +89,7 @@ const CreatedPlace = (props) => {
                                 </div>
                             )
                         })}
-                    </ul>
+                    
                 </div>
 
 

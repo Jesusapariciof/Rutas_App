@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
+import './Guide.css'
 
 const Guide = (props) => {
 
@@ -13,17 +14,18 @@ const Guide = (props) => {
     }, [])
 
     return (
-        <div>
+        <div className="fondo-guia">
             <h1>Rutas turísticas</h1>
             {
                 lugar.map((item, index) =>
-                    <div key={index}>
+                    <div  key={index}>
                         {/* <div className="d-grid gap-2 col-6 mx-auto">
                             <button className="btn btn-primary" type="button">{item.name}</button>
                         </div> */}
-
-                        <h3>{item.name}</h3>
-                        <Link to={'/placesById/' + item._id} >Saber más</Link>
+                        <div className="guia">
+                        {/* <h3>{item.name}</h3> */}
+                        <Link className="saber" to={'/placesById/' + item._id} ><h5>{item.name} </h5> </Link>
+                        </div>
                     </div>
                 )
             }

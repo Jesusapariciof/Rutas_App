@@ -35,11 +35,9 @@ const Perfil =(props)=>{
             <h1 onClick={()=>redirectToFavoritos()}>Favoritos</h1>
             </div>
             </div>
-            </div>
-
-            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button className="btn btn-primary me-md-2" onClick={()=> logout()}>Cerrar Sesión</button>
             </div>
+            
 
         </div>
     )

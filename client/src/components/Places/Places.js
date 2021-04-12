@@ -21,11 +21,11 @@ console.log(props)
                     <h1>{places.name}</h1>
                     <div className="localidad">
                         <h3>Localidad</h3>
-                        <h4>{places.town}</h4>
+                        <h4 className="letra">{places.town}</h4>
                     </div>
                     <div className="descripcion">
                         <h3>Descripción</h3>
-                        <h4>{places.description}</h4>
+                        <h4 className="letra">{places.description}</h4>
                     </div>
                     <div className="imagen">
                         <h3>Imagen</h3>

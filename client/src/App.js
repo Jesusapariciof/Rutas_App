@@ -15,6 +15,7 @@ import Modify from './components/Modify/Modify';
 import Home from './components/Home/Home';
 import CreatedPlaces from './components/CreatedPlaces/CreatedPlaces';
 import Nav from './components/Nav/Nav'
+import Error404 from './components/Error404/Error404'
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/modify/:id" component = {Modify} />
           <Route path="/home" component={Home} />
           <Route path="/createdplaces" component={CreatedPlaces} />
+          <Route component={Error404} />
         </Switch>
       </div>
     </Router>

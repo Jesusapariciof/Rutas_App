@@ -4,3 +4,15 @@ button.btn.btn-success{
     margin: 10px;
     
 }
+
+.infotext{
+    text-decoration: none;
+    color: white;
+}
+
+
+.btn.btn-primary{
+    width:200px;
+    margin-right: 5px;
+  
+}

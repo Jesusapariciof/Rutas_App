@@ -1,0 +1,26 @@
+.guia{
+    border-bottom: 8px outset rgba(28,110,164,0.72);
+    border-radius: 23px 40px 40px 23px;
+    margin:20px 2px 20px 2px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 2px;
+   
+
+  
+    
+}
+.saber{
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font: bold;
+    
+    
+}
+/* .fondo-guia{
+    background-image: url('/src/assets/mountains-1587287_1280.webp');
+    background-size: cover;
+    height: 100vh;
+} */

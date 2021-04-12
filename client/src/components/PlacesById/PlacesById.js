@@ -33,9 +33,9 @@ const PlacesById = (props) => {
                     <div key={index} className="lugares">
                         
                         <img src={`http://localhost:5000/storage/${item.image}`}className="card-img-top" alt="Foto_lugar" />
-                        <div>
+                        <div className="info">
                             <h3>{item.name}</h3>
-                            <Link to={'/place/' + item._id} >Saber más</Link>
+                            <button className="btn btn-primary"> <Link className="infotext" to={'/place/' + item._id} >Saber más</Link></button> 
                         </div>
                        
                     </div>
