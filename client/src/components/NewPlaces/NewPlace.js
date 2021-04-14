@@ -56,6 +56,7 @@ function NewPlace(props) {
                 console.log(response.data)
             })
             .catch((error) => {
+                
                    setBotonLogin(error.response.data)
                 console.log(error.response.data)
             })
@@ -79,7 +80,7 @@ function NewPlace(props) {
                 <p>Nombre</p>
                 <input name="name" type="text" required onChange={handleChangeInput} />
                 <p>Imagen</p>
-                <input name="image" type="file" accept="image/*" required onChange={handleChangeImage} />
+                <input name="image" type="file" accept="image/*" onChange={handleChangeImage} />
                 <p>Población</p>
                 <input name="town" type="text"required onChange={handleChangeInput} />
                 <p>Description</p>
@@ -108,7 +109,7 @@ function NewPlace(props) {
                 </div>
                 
                 {wellDone && <div><p className="correcto">{wellDone}</p></div>}
-                {botonLogin &&  <p className="correcto" onClick={() => redirectToLogin()}> {botonLogin}</p> }
+                {botonLogin &&  <p className="irlogin" onClick={() => redirectToLogin()}> {botonLogin}</p> }
             <div className="mt-2">
                 <span>Ir a  </span>
                 <span className="link" onClick={() => redirectToLugaresCreados()}>MIS LUGARES</span>

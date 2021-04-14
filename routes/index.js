@@ -27,11 +27,17 @@ router.get('/allUsers', (req, res)=>{
 router.post('/register', (req, res)=>{
     const {body: {username, email, password}} = req
     //  const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    validateEmail(email)
+    // validateEmail(email)
     // validatePassword(password)
 
     if(password.length < 6){
         res.status(400).send('La contraseña debe tener al menos 6 caractares')
+    }
+    if(username.length < 1){
+        res.status(400).send('Por favor, rellene el nombre de Usuario')
+    }
+    if(email.length < 1){
+        res.status(400).send('Por favor, rellene el email')
     }
 
     const newUser = new User({

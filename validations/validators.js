@@ -27,6 +27,10 @@ validateTown(town){
 validateDescription(description){
     if(typeof description !== 'string') throw new TypeError(`${description} no es una descripción`)
     if(!description.trim().length) throw new Error('El campo descripción está vacio')
+},
+validateImage(image){
+    if(typeof image !== 'string') throw new TypeError(`${image} no es una foto`)
+    if(!image.trim().length) throw new Error('El campo imagen está vacio')
 }
 }
 

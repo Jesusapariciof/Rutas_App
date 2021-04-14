@@ -8,3 +8,7 @@
 .fondo{
    background-image: url('/src/assets/avenue-3464777_1280.jpeg');
 }
+
+.btn.btn-light{
+    font-size: 20px;
+}

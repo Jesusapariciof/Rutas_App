@@ -16,6 +16,11 @@ const Nav = () =>{
     <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
       <ReactBootStrap.Nav className="mr-auto"> 
+      <Link to="/home">
+      <ReactBootStrap.Nav.Link eventKey={2} href="#home">
+          Home
+        </ReactBootStrap.Nav.Link>
+      </Link>
       <Link to="/miperfil">
       <ReactBootStrap.Nav.Link href="#miperfil">Perfil</ReactBootStrap.Nav.Link>
       </Link>
@@ -27,11 +32,7 @@ const Nav = () =>{
       <Link to="/newplace">
       <ReactBootStrap.Nav.Link href="#newplace">Crear Lugar </ReactBootStrap.Nav.Link>
       </Link>
-      <Link to="/home">
-      <ReactBootStrap.Nav.Link eventKey={2} href="#home">
-          Home
-        </ReactBootStrap.Nav.Link>
-      </Link>
+      
       </ReactBootStrap.Nav>
     </ReactBootStrap.Navbar.Collapse>
   </ReactBootStrap.Navbar>

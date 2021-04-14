@@ -8,7 +8,7 @@ const placesRouter = new Router()
 const express = require('express')
 const multer = require('../routes/multer')
 const jwt = require('jsonwebtoken')
-const { validateName, validateTown, validateDescription } = require('../validations/validators')
+const { validateName, validateTown, validateDescription, validateImage } = require('../validations/validators')
 
 const verifyToken = require('../models/verifyToken')
 
@@ -20,7 +20,7 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
     // const { body: { name, town, description, guideId } } = req
     
     const name = req.body.name
-    const image = req.file.filename
+    const image = req.file ? req.file.filename : 'no-img.jpeg'
     const town = req.body.town
     const description = req.body.description
     const guideId = req.body.guideId
@@ -31,6 +31,7 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
     validateName(name)
     validateTown(town)
     validateDescription(description)
+    validateImage(image)
     const place = new Place({
         name: name,
         image: image,
@@ -62,7 +63,7 @@ placesRouter.post('/newplace',verifyToken, multer.single('image'), async (req, r
            
         }
         catch(error){
-
+            
             return res.status(400).send('Por favor, rellene todos los campos')
         }
             
