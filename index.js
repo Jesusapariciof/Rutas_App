@@ -5,7 +5,7 @@ const app = express()
 const mongoose = require('mongoose')
 const placesRouter = require('./routes/placesRoute')
 const cors = require('cors')
-
+const path = require("path")
 
 
 const {env: {MONGODB_URL}}= process
@@ -24,7 +24,7 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     app.use(router)
     app.use(guideRoute)
     app.use(placesRouter)
-    
+    app.use(express.static(path.join(__dirname, "client", "build")))
 
      app.use("*/storage", express.static("storage"));
     
@@ -32,10 +32,14 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
    
    
     
+     app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    });
     
+   
 
-    const port = 5000
-    app.listen(process.env.PORT || port, ()=>{
+    const port = process.env.PORT || 5000
+    app.listen( port, ()=>{
         console.log(`El servidor se ha inicializado en el puerto ${port}`)
     })
 })
