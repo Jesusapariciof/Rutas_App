@@ -48,10 +48,8 @@ mongoose.connect(MONGODB_URL, {useCreateIndex:true, useNewUrlParser:true, useUni
     
    
 
-    const port = process.env.PORT || 5000
-    app.listen(port, ()=>{
-        console.log(`El servidor se ha inicializado en el puerto ${port}`)
-    })
+    const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 })
 
 
