@@ -10,7 +10,7 @@ console.log(props)
 
     useEffect(() => {
 
-        axios.get('http://localhost:5000/place/'+ props.match.params.id)
+        axios.get('/place/'+ props.match.params.id)
             .then(response => setplaces(response.data))
     }, [])
     return (
@@ -29,7 +29,7 @@ console.log(props)
                     </div>
                     <div className="imagen">
                         {/* <h3>Imagen</h3> */}
-                        <img src={`http://localhost:5000/storage/${places.image}`} className="card-img-top" alt="Foto_lugar" />
+                        <img src={`/storage/${places.image}`} className="card-img-top" alt="Foto_lugar" />
                     </div>
                 </div>
 

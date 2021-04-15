@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { ACCES_TOKEN_NAME } from "../constants/constants"
 import { withRouter, Link } from "react-router-dom";
 import './CreatedPlaces.css'
-import logo from '../../assets/flecha.jpeg'
+
 
 const CreatedPlace = (props) => {
 
@@ -32,7 +32,7 @@ const CreatedPlace = (props) => {
 
 
     const handleDeletePlace = (id) => {
-        axios.delete(`http://localhost:5000/places/user/` + id + `/delete`, {
+        axios.delete(`/places/user/` + id + `/delete`, {
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('jwt-token')}`

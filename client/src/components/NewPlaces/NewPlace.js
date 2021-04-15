@@ -43,7 +43,7 @@ function NewPlace(props) {
         formData.append("description", newPlace.description)
         formData.append("guideId", newPlace.guideId)
 
-        axios.post('http://localhost:5000/newplace', formData,
+        axios.post('/newplace', formData,
             {
                 headers: {
                     'Content-Type': 'application/json',

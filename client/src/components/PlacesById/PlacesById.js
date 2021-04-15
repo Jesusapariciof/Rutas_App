@@ -10,7 +10,7 @@ const PlacesById = (props) => {
     console.log(guideId)
     useEffect(() => {
 
-        axios.get('http://localhost:5000/guideId/' + props.match.params.id)
+        axios.get('/guideId/' + props.match.params.id)
             .then(response => setguideId(response.data))
 
     }, [])
@@ -32,7 +32,7 @@ const PlacesById = (props) => {
                     
                     <div key={index} className="lugares">
                         
-                        <img src={`http://localhost:5000/storage/${item.image}`}className="card-img-top" alt="Foto_lugar" />
+                        <img src={`/storage/${item.image}`}className="card-img-top" alt="Foto_lugar" />
                         <div className="info">
                             <h3>{item.name}</h3>
                             <button className="btn btn-primary"> <Link className="infotext" to={'/place/' + item._id} >Saber más</Link></button> 

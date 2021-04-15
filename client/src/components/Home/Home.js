@@ -1,6 +1,6 @@
 import { withRouter } from "react-router-dom";
 import './Home.css'
-import fondo from '../../assets/avenue-3464777_1280.jpeg' 
+
 
 
 const Home = (props)=>{

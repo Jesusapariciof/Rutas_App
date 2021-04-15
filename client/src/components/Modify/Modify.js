@@ -26,7 +26,7 @@ console.log(props)
         
         
 
-        axios.put(`http://localhost:5000/places/user/` + props.match.params.id + `/modificar`,modificarLugar, {
+        axios.put(`/places/user/` + props.match.params.id + `/modificar`,modificarLugar, {
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('jwt-token')}`

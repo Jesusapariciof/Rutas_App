@@ -16,7 +16,7 @@ const Register = (props)=>{
     const submitRegister = (e) =>{
      e.preventDefault()
 
-        axios.post('http://localhost:5000/register', {...register})
+        axios.post('/register', {...register})
         .then(response =>{
             setRegisterCorrecto(response.data.message)
             localStorage.setItem(ACCES_TOKEN_NAME, response.data.token)
