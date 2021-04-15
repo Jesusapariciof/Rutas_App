@@ -77,7 +77,7 @@ const CreatedPlace = (props) => {
                                 <div className="listalugares">
                                 <div key={lugar._id} className="lugares">
 
-                                    <img src={`http://localhost:5000/storage/${lugar.image}`} className="card-img-top" alt="Foto_lugar" />
+                                    <img src={`/storage/${lugar.image}`} className="card-img-top" alt="Foto_lugar" />
                                     <div>
                                         <h3>{lugar.name}</h3>
                                         <div className="acciones">
