@@ -9,7 +9,7 @@ const Guide = (props) => {
     console.log(lugar)
     useEffect(() => {
 
-        axios.get('http://localhost:5000/guide')
+        axios.get('/guide')
             .then(response => setLugar(response.data))
     }, [])
 

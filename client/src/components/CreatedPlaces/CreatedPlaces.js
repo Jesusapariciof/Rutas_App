@@ -13,7 +13,7 @@ const CreatedPlace = (props) => {
     useEffect(() => {
         const token = localStorage.getItem(ACCES_TOKEN_NAME)
         console.log(token)
-        axios.get(`http://localhost:5000/user/miperfil`, {
+        axios.get(`/user/miperfil`, {
             headers: {
                 authorization: `Bearer ${token}`
             }
