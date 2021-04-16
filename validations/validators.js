@@ -9,7 +9,7 @@
 const validations = {
     validateUsername(username){
         if(typeof username !== 'string') throw new TypeError(`${username} No es un email`)
-        if(!email.trim().length) throw new Error ('El nombre de usuario está vacio')
+        if(!username.trim().length) throw new Error ('El nombre de usuario está vacio')
     },
     validateEmail(email){
         if(typeof email !== 'string') throw new TypeError(`${email} No es un email`)

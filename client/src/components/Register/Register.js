@@ -25,7 +25,7 @@ const Register = (props)=>{
         })
 
         .catch((error)=>{
-            setErrorRegister(error.response.data)
+             setErrorRegister(error.response.data)
             console.log(error.response.data)
                 
     })
