@@ -48,20 +48,47 @@ margin-bottom: 10px;
   text-align: left;
 }
 .localidad h4{
-  border: 3px ridge rgba(28,110,164,0.33);
   position: absolute;
+  background: #889ccf; 
+  padding: 4px;
+  font-size: 18px;
+  border: 2px solid #5878ca;
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+color: #ffffff; 
   
 }
 .descripcion{
   margin-top: 40px;
-  text-align: left;
+  text-align: justify;
+  
 }
 h3{
   font: bold;
 }
 .descripcion h4{
   /* border: 1px solid blue; */
-  border: 3px ridge rgba(28,110,164,0.33);
+
+  /* border-radius: 2%;
+  padding: 4px;
+  font-size: 20px;
+  background-color: rgb(240, 240, 248); */
+
+  /* font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+color: #ffffff; 
+font-size: 18px; 
+font-weight: 400; 
+text-align: justify; 
+background: #889ccf; 
+margin: 0 0 25px; 
+overflow: hidden; 
+padding: 20px; 
+border-radius: 35px 0px 35px 0px; 
+border: 2px solid #5878ca; */
+font-size: 18px;
+text-align: justify;
+margin: 5px;
+margin-right: 5px;
+text-shadow: 3px 3px 2px rgba(152, 150, 207, 0.7);
 }
 .letra{
   font-style: italic;

@@ -30,11 +30,11 @@ const Perfil =(props)=>{
                 <h1 onClick={()=>redirectToLugaresCreados()}>Lugares Creados</h1>
                 </div>
             </div>
-            <div className="card">
+            {/* <div className="card">
                 <div className="card-body">
             <h1 onClick={()=>redirectToFavoritos()}>Favoritos</h1>
             </div>
-            </div>
+            </div> */}
             <button className="btn btn-primary me-md-2" onClick={()=> logout()}>Cerrar Sesión</button>
             </div>
             
