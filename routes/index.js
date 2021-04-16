@@ -2,7 +2,7 @@ require('dotenv').config()
 const { Router } = require('express')
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
-const { validateEmail, validatePassword} = require('../validations/validators')
+const { validateUsername, validateEmail, validatePassword} = require('../validations/validators')
 const jwt = require('jsonwebtoken')
 const user = require('../models/user')
 const verifyToken = require('../models/verifyToken')
@@ -29,15 +29,20 @@ router.post('/register', (req, res)=>{
     //  const hashedPassword = await bcrypt.hash(req.body.password, 10)
     // validateEmail(email)
     // validatePassword(password)
-
-    if(password.length < 6){
-        res.status(400).send('La contraseña debe tener al menos 6 caractares')
+    // validateUsername(username)
+    const usernameDuplicado =  User.findOne({username})
+    if(username === usernameDuplicado){
+        res.status(400).send('El nombre de usuario ya existe')
     }
+
     if(username.length < 1){
         res.status(400).send('Por favor, rellene el nombre de Usuario')
     }
     if(email.length < 1){
         res.status(400).send('Por favor, rellene el email')
+    }
+    if(password.length < 6){
+        res.status(400).send('La contraseña debe tener al menos 6 caractares')
     }
 
     const newUser = new User({
