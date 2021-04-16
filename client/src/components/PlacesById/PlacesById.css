@@ -16,3 +16,14 @@ button.btn.btn-success{
     margin-right: 5px;
   
 }
+
+@media(min-width:768px){
+    .lugares{
+        margin: 10px;
+    }
+    .organizacion{
+        display: grid;
+        grid-template-columns: 500px 500px;
+        justify-content: center;
+    }
+}

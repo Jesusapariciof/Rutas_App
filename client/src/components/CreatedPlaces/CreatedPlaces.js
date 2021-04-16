@@ -71,7 +71,7 @@ const CreatedPlace = (props) => {
 
             {user &&
                 <div>
-                    
+                    <div className="organizacion">
                         {user.lugaresCreados.map(lugar => {
                             return (
                                 <div className="listalugares">
@@ -89,7 +89,7 @@ const CreatedPlace = (props) => {
                                 </div>
                             )
                         })}
-                    
+                    </div>
                 </div>
 
 

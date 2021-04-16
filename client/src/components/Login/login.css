@@ -26,3 +26,12 @@ input{
     font: bold;
 }
 
+@media(min-width:768px){
+    .card{
+        min-width: 100%;
+    }
+    .fondo-guia{
+        background-size: cover;
+        height: 100vh;
+    }
+}

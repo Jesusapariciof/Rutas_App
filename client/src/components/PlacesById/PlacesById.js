@@ -26,8 +26,8 @@ const PlacesById = (props) => {
             <div className="crealugar">
             <button className="btn btn-success" onClick={() => redirectToNewPlace()}>Crear lugar</button>
             </div>
+            <div className="organizacion">
             {
-              
                 guideId.map((item, index) =>
                     
                     <div key={index} className="lugares">
@@ -39,9 +39,9 @@ const PlacesById = (props) => {
                         </div>
                        
                     </div>
-                   
                 )
             }
+                   </div>
         </div>
     )
 }
